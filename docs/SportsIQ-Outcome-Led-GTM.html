@@ -1,0 +1,781 @@
+<!doctype html>
+<html lang="en-US">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Sports-IQ outcome-led go-to-market brief for connected, measurable fan experiences.">
+  <title>Sports-IQ | Outcome-Led GTM</title>
+  <script>
+    (() => {
+      const param = new URLSearchParams(window.location.search).get("scoutTheme");
+      const theme =
+        param || (window.matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
+      document.documentElement.setAttribute("data-theme", theme);
+    })();
+  </script>
+  <style>
+    :root {
+      color-scheme: light;
+      --cp-bg: #f7f4ef;
+      --cp-bg-elevated: #fcfbf8;
+      --cp-surface: #ffffff;
+      --cp-surface-soft: #f5f5f5;
+      --cp-border: #dedede;
+      --cp-border-strong: #919191;
+      --cp-text: #242424;
+      --cp-text-muted: #5c5c5c;
+      --cp-text-soft: #6f6f6f;
+      --cp-accent: #b11f4b;
+      --cp-accent-hover: #9a1a41;
+      --cp-accent-soft: rgba(177, 31, 75, 0.08);
+      --cp-accent-fg: #ffffff;
+      --cp-success: #16a34a;
+      --cp-danger: #dc2626;
+      --cp-warning: #f59e0b;
+      --cp-link: #0078d4;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.12);
+      --cp-overlay: rgba(255, 255, 255, 0.8);
+      --cp-panel: rgba(255, 255, 255, 0.86);
+      --cp-panel-strong: rgba(255, 255, 255, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.55);
+      --cp-highlight: rgba(177, 31, 75, 0.12);
+    }
+    html[data-theme="dark"] {
+      color-scheme: dark;
+      --cp-bg: #3d3b3a;
+      --cp-bg-elevated: #343231;
+      --cp-surface: #292929;
+      --cp-surface-soft: #2e2e2e;
+      --cp-border: #474747;
+      --cp-border-strong: #5f5f5f;
+      --cp-text: #dedede;
+      --cp-text-muted: #919191;
+      --cp-text-soft: #b0b0b0;
+      --cp-accent: #fd8ea1;
+      --cp-accent-hover: #fb7b91;
+      --cp-accent-soft: rgba(253, 142, 161, 0.14);
+      --cp-accent-fg: #1a1a1a;
+      --cp-success: #4ade80;
+      --cp-danger: #f87171;
+      --cp-warning: #fbbf24;
+      --cp-link: #4da6ff;
+      --cp-shadow: 0 18px 48px rgba(0, 0, 0, 0.32);
+      --cp-overlay: rgba(41, 41, 41, 0.88);
+      --cp-panel: rgba(41, 41, 41, 0.72);
+      --cp-panel-strong: rgba(41, 41, 41, 0.96);
+      --cp-sheen: rgba(255, 255, 255, 0.04);
+      --cp-highlight: rgba(253, 142, 161, 0.12);
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 5rem; }
+    body {
+      margin: 0;
+      overflow-x: hidden;
+      background: var(--cp-bg);
+      color: var(--cp-text);
+      font-family: "Segoe UI", Aptos, Calibri, -apple-system, BlinkMacSystemFont, sans-serif;
+      line-height: 1.6;
+    }
+    button, summary, a { -webkit-tap-highlight-color: transparent; }
+    a { color: var(--cp-link); }
+    a:focus-visible, button:focus-visible, summary:focus-visible {
+      outline: 3px solid var(--cp-accent);
+      outline-offset: 3px;
+    }
+    .skip-link {
+      position: fixed;
+      inset-block-start: 0.75rem;
+      inset-inline-start: 0.75rem;
+      z-index: 100;
+      padding: 0.65rem 0.9rem;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      border-radius: 0.625rem;
+      transform: translateY(-160%);
+    }
+    .skip-link:focus { transform: translateY(0); }
+    .topbar {
+      position: sticky;
+      inset-block-start: 0;
+      z-index: 20;
+      border-block-end: 1px solid var(--cp-border);
+      background: var(--cp-panel-strong);
+      backdrop-filter: blur(12px);
+    }
+    .topbar-inner {
+      max-width: 88rem;
+      min-height: 4rem;
+      margin-inline: auto;
+      padding-inline: 1.25rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+    .brand {
+      min-width: 0;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      color: var(--cp-text);
+      text-decoration: none;
+      font-weight: 750;
+      letter-spacing: 0;
+    }
+    .brand-mark {
+      width: 2rem;
+      height: 2rem;
+      display: grid;
+      place-items: center;
+      border-radius: 0.625rem;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-size: 0.78rem;
+      font-weight: 800;
+    }
+    .toolbar { display: flex; flex: 0 0 auto; gap: 0.5rem; }
+    .icon-button {
+      width: 2.5rem;
+      height: 2.5rem;
+      display: grid;
+      place-items: center;
+      border: 1px solid var(--cp-border);
+      border-radius: 0.625rem;
+      background: var(--cp-surface);
+      color: var(--cp-text);
+      cursor: pointer;
+      font: inherit;
+      font-size: 1rem;
+    }
+    .icon-button:hover { border-color: var(--cp-border-strong); background: var(--cp-surface-soft); }
+    .layout {
+      max-width: 88rem;
+      margin-inline: auto;
+      padding: 2rem 1.25rem 5rem;
+      display: grid;
+      grid-template-columns: 15rem minmax(0, 1fr);
+      gap: 3rem;
+    }
+    .toc {
+      position: sticky;
+      inset-block-start: 6rem;
+      align-self: start;
+      max-height: calc(100vh - 7rem);
+      overflow: auto;
+    }
+    .toc-label {
+      margin: 0 0 0.75rem;
+      color: var(--cp-text-muted);
+      font-size: 0.75rem;
+      font-weight: 750;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    .toc a {
+      display: block;
+      padding: 0.45rem 0.65rem;
+      border-inline-start: 2px solid var(--cp-border);
+      color: var(--cp-text-muted);
+      text-decoration: none;
+      font-size: 0.88rem;
+    }
+    .toc a:hover { color: var(--cp-accent); border-color: var(--cp-accent); }
+    main { min-width: 0; }
+    .hero {
+      position: relative;
+      min-height: 29rem;
+      padding: clamp(2rem, 6vw, 5rem);
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      overflow: hidden;
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-surface);
+    }
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        linear-gradient(90deg, var(--cp-highlight) 1px, transparent 1px),
+        linear-gradient(var(--cp-highlight) 1px, transparent 1px);
+      background-size: 2rem 2rem;
+      mask-image: linear-gradient(to bottom, var(--cp-text), transparent 72%);
+      opacity: 0.7;
+    }
+    .hero::after {
+      content: "IQ";
+      position: absolute;
+      inset-block-start: -2rem;
+      inset-inline-end: 1rem;
+      color: var(--cp-accent-soft);
+      font-size: clamp(9rem, 24vw, 22rem);
+      font-weight: 900;
+      line-height: 1;
+      pointer-events: none;
+    }
+    .hero-content { position: relative; z-index: 1; max-width: 56rem; }
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-block-end: 1rem;
+      color: var(--cp-accent);
+      font-size: 0.82rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+    }
+    h1, h2, h3, h4 { max-width: 100%; overflow-wrap: anywhere; line-height: 1.15; letter-spacing: 0; text-wrap: balance; }
+    h1 { margin: 0; max-width: 14ch; font-size: clamp(2.65rem, 7vw, 5.8rem); font-weight: 820; }
+    h2 { margin: 0 0 1rem; font-size: clamp(1.8rem, 4vw, 3rem); }
+    h3 { margin: 0; font-size: clamp(1.2rem, 2.4vw, 1.65rem); }
+    h4 { margin: 0 0 0.65rem; font-size: 0.92rem; text-transform: uppercase; color: var(--cp-accent); }
+    .hero-lede { max-width: 58ch; margin: 1.5rem 0 0; color: var(--cp-text-muted); font-size: 1.15rem; }
+    .hero-proof {
+      margin-block-start: 2rem;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.65rem;
+    }
+    .proof-chip {
+      padding: 0.45rem 0.7rem;
+      border: 1px solid var(--cp-border);
+      border-radius: 999px;
+      background: var(--cp-panel);
+      color: var(--cp-text-muted);
+      font-size: 0.8rem;
+      font-weight: 650;
+    }
+    section { padding-block: 4.5rem; border-block-end: 1px solid var(--cp-border); }
+    .section-kicker { margin: 0 0 0.4rem; color: var(--cp-accent); font-weight: 750; }
+    .section-intro { max-width: 70ch; margin: 0; color: var(--cp-text-muted); font-size: 1.05rem; }
+    .narrative { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+    .narrative p { margin-block-start: 0; }
+    .value-loop {
+      margin-block-start: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0.75rem;
+      counter-reset: loop;
+    }
+    .loop-step {
+      position: relative;
+      min-height: 9rem;
+      padding: 1rem;
+      border-block-start: 4px solid var(--cp-accent);
+      background: var(--cp-surface);
+      counter-increment: loop;
+    }
+    .loop-step::before {
+      content: "0" counter(loop);
+      display: block;
+      margin-block-end: 1.25rem;
+      color: var(--cp-accent);
+      font-weight: 800;
+    }
+    .loop-step strong { display: block; margin-block-end: 0.35rem; }
+    .loop-step span { color: var(--cp-text-muted); font-size: 0.84rem; }
+    .outcomes { margin-block-start: 2.25rem; display: grid; gap: 1rem; }
+    .outcome {
+      border: 1px solid var(--cp-border);
+      border-radius: 16px;
+      background: var(--cp-surface);
+      overflow: clip;
+      box-shadow: 0 0 2px var(--cp-border), 0 1px 2px var(--cp-border);
+    }
+    .outcome summary {
+      min-height: 7rem;
+      padding: 1.4rem;
+      display: grid;
+      grid-template-columns: 3rem minmax(0, 1fr) auto;
+      gap: 1rem;
+      align-items: center;
+      cursor: pointer;
+      list-style: none;
+    }
+    .outcome summary::-webkit-details-marker { display: none; }
+    .outcome-number {
+      width: 3rem;
+      height: 3rem;
+      display: grid;
+      place-items: center;
+      border-radius: 50%;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+      font-weight: 850;
+    }
+    .outcome-title span { display: block; margin-block-start: 0.4rem; color: var(--cp-text-muted); font-size: 0.93rem; }
+    .chevron { color: var(--cp-accent); font-size: 1.35rem; transition: transform 160ms ease; }
+    details[open] .chevron { transform: rotate(45deg); }
+    .outcome-body { padding: 0 1.5rem 1.75rem 5.4rem; border-block-start: 1px solid var(--cp-border); }
+    .outcome-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; padding-block-start: 1.5rem; }
+    .outcome-grid ul { margin: 0; padding-inline-start: 1.15rem; }
+    .outcome-grid li + li { margin-block-start: 0.5rem; }
+    .buyer {
+      margin-block-start: 1.5rem;
+      padding: 0.8rem 1rem;
+      border-inline-start: 4px solid var(--cp-accent);
+      background: var(--cp-accent-soft);
+      font-weight: 650;
+    }
+    .table-wrap { margin-block-start: 2rem; overflow-x: auto; border: 1px solid var(--cp-border); border-radius: 0.625rem; }
+    table { width: 100%; border-collapse: collapse; background: var(--cp-surface); font-size: 0.9rem; }
+    th, td { padding: 0.9rem 1rem; text-align: start; vertical-align: top; border-block-end: 1px solid var(--cp-border); }
+    th { color: var(--cp-text); background: var(--cp-surface-soft); font-size: 0.78rem; text-transform: uppercase; }
+    tr:last-child td { border-block-end: 0; }
+    tbody tr:hover { background: var(--cp-accent-soft); }
+    .maturity {
+      margin-block-start: 2.5rem;
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+      gap: 0;
+    }
+    .stage { position: relative; padding: 1.25rem 1rem; border-block-start: 3px solid var(--cp-border-strong); }
+    .stage::before {
+      content: "";
+      position: absolute;
+      width: 0.75rem;
+      height: 0.75rem;
+      inset-block-start: -0.45rem;
+      inset-inline-start: 1rem;
+      border-radius: 50%;
+      background: var(--cp-accent);
+    }
+    .stage small { color: var(--cp-accent); font-weight: 800; text-transform: uppercase; }
+    .stage h3 { margin: 0.55rem 0 0.8rem; font-size: 1.05rem; }
+    .stage p { margin: 0; color: var(--cp-text-muted); font-size: 0.85rem; }
+    .stage .exit { margin-block-start: 0.85rem; color: var(--cp-text); font-weight: 650; }
+    .question-grid { margin-block-start: 2rem; display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+    .question-group { padding: 1.25rem; border: 1px solid var(--cp-border); border-radius: 16px; background: var(--cp-surface); }
+    .question-group ul { margin-block-end: 0; padding-inline-start: 1.15rem; }
+    .question-group li + li { margin-block-start: 0.55rem; }
+    .pitch {
+      padding: clamp(2rem, 5vw, 4rem);
+      border-radius: 16px;
+      background: var(--cp-accent);
+      color: var(--cp-accent-fg);
+    }
+    .pitch h2, .pitch p { color: var(--cp-accent-fg); }
+    .pitch p { max-width: 75ch; font-size: 1.08rem; }
+    .pitch-actions { margin-block-start: 1.5rem; }
+    .copy-button {
+      min-height: 2.75rem;
+      padding: 0.65rem 1rem;
+      border: 1px solid var(--cp-accent-fg);
+      border-radius: 0.625rem;
+      background: transparent;
+      color: var(--cp-accent-fg);
+      cursor: pointer;
+      font: inherit;
+      font-weight: 700;
+    }
+    .copy-button:hover { background: var(--cp-accent-hover); }
+    .assumptions {
+      margin-block-start: 2rem;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0.75rem;
+    }
+    .metric { padding: 1rem; border: 1px solid var(--cp-border); background: var(--cp-surface); }
+    .metric strong { display: block; color: var(--cp-accent); font-size: 1.5rem; }
+    .metric span { display: block; color: var(--cp-text-muted); font-size: 0.8rem; }
+    .caution { margin-block-start: 1rem; padding: 1rem; border-inline-start: 4px solid var(--cp-warning); background: var(--cp-surface); }
+    .cta {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(18rem, 0.65fr);
+      gap: 2rem;
+      align-items: start;
+    }
+    .cta-list { margin: 0; padding: 1.5rem 1.5rem 1.5rem 3rem; border: 1px solid var(--cp-border); border-radius: 16px; background: var(--cp-surface); }
+    .cta-list li + li { margin-block-start: 0.7rem; }
+    footer { padding-block-start: 3rem; color: var(--cp-text-muted); font-size: 0.85rem; }
+    footer ul { padding-inline-start: 1.1rem; }
+    .back-to-top { display: inline-block; margin-block-start: 1.5rem; }
+
+    @media (max-width: 68rem) {
+      .layout { grid-template-columns: 1fr; }
+      .toc { display: none; }
+      .outcome-grid { grid-template-columns: 1fr; }
+      .maturity { grid-template-columns: 1fr; }
+      .stage { border-block-start: 0; border-inline-start: 3px solid var(--cp-border-strong); padding-inline-start: 1.5rem; }
+      .stage::before { inset-block-start: 1.5rem; inset-inline-start: -0.45rem; }
+    }
+    @media (max-width: 46rem) {
+      .topbar-inner { padding-inline: 1rem; }
+      .layout { padding: 1rem 1rem 4rem; }
+      .hero { width: 100%; min-height: 34rem; padding: 1.5rem; }
+      .hero::after { font-size: 10rem; }
+      h1 { font-size: 2.35rem; }
+      h2 { font-size: 2rem; }
+      .narrative, .question-grid, .cta { grid-template-columns: 1fr; }
+      .value-loop { grid-template-columns: 1fr; }
+      .loop-step { min-height: auto; }
+      .outcome summary { grid-template-columns: 2.5rem minmax(0, 1fr) auto; padding: 1rem; }
+      .outcome-number { width: 2.5rem; height: 2.5rem; }
+      .outcome-body { padding: 0 1rem 1.25rem; }
+      .assumptions { grid-template-columns: repeat(2, 1fr); }
+      section { padding-block: 3.25rem; }
+      .brand-text { display: none; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .chevron { transition: none; }
+    }
+    @media print {
+      :root, html[data-theme="dark"] { color-scheme: light; }
+      body { background: var(--cp-surface); }
+      .topbar, .toc, .skip-link, .pitch-actions, .back-to-top { display: none; }
+      .layout { display: block; max-width: none; padding: 0; }
+      .hero { min-height: auto; break-after: page; }
+      section { break-inside: avoid; }
+      .outcome { break-inside: avoid; box-shadow: none; }
+      details:not([open]) > *:not(summary) { display: block; }
+    }
+  </style>
+</head>
+<body id="top">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <header class="topbar">
+    <div class="topbar-inner">
+      <a class="brand" href="#top" aria-label="Sports-IQ home">
+        <span class="brand-mark" aria-hidden="true">SIQ</span>
+        <span class="brand-text">Sports-IQ Outcome-Led GTM</span>
+      </a>
+      <div class="toolbar" aria-label="Document actions">
+        <button class="icon-button" id="expandButton" type="button" title="Expand or collapse all outcome plays" aria-label="Expand all outcome plays">+</button>
+        <button class="icon-button" id="themeButton" type="button" title="Toggle color theme" aria-label="Toggle color theme">◐</button>
+        <button class="icon-button" id="printButton" type="button" title="Print document" aria-label="Print document">⇩</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="layout">
+    <nav class="toc" aria-label="On this page">
+      <p class="toc-label">On this page</p>
+      <a href="#promise">Promise</a>
+      <a href="#narrative">Executive narrative</a>
+      <a href="#outcomes">Outcome plays</a>
+      <a href="#portfolio">Outcome portfolio</a>
+      <a href="#maturity">Maturity journey</a>
+      <a href="#buyers">Buyer messages</a>
+      <a href="#discovery">Discovery questions</a>
+      <a href="#pitch">Executive pitch</a>
+      <a href="#foundation">Enabling foundation</a>
+      <a href="#value">Value hypothesis</a>
+      <a href="#cta">Call to action</a>
+    </nav>
+
+    <main id="main">
+      <article>
+        <header class="hero" id="promise">
+          <div class="hero-content">
+            <span class="eyebrow">Outcome-led go-to-market brief</span>
+            <h1>Know every fan.</h1>
+            <p class="hero-lede">Improve every game-day journey. Turn the right moments into measurable value. Choose the next best action, including when the best action is no interruption at all.</p>
+            <div class="hero-proof" aria-label="Sports-IQ principles">
+              <span class="proof-chip">Fan context</span>
+              <span class="proof-chip">Moment protection</span>
+              <span class="proof-chip">Venue-aware action</span>
+              <span class="proof-chip">Closed-loop learning</span>
+            </div>
+          </div>
+        </header>
+
+        <section id="narrative" aria-labelledby="narrative-title">
+          <p class="section-kicker">The opportunity</p>
+          <h2 id="narrative-title">From fragmented signals to a connected fan experience</h2>
+          <div class="narrative">
+            <p>Most sports organizations already have valuable fan data, but it is fragmented across ticketing, loyalty, mobile apps, point of sale, parking, venue operations, and game systems. That makes it difficult to recognize a fan's current context or respond while the moment still matters.</p>
+            <p>Sports-IQ creates a shared understanding of the fan and the game-day journey. It combines what is happening now with what the organization already knows, then uses trusted venue, policy, loyalty, weather, and journey knowledge to recommend a relevant and feasible next action.</p>
+          </div>
+          <div class="value-loop" aria-label="Sports-IQ value loop">
+            <div class="loop-step"><strong>Understand</strong><span>The fan, history, and current situation.</span></div>
+            <div class="loop-step"><strong>Decide</strong><span>Whether assistance, an offer, or silence is best.</span></div>
+            <div class="loop-step"><strong>Act</strong><span>While the opportunity is still relevant.</span></div>
+            <div class="loop-step"><strong>Measure</strong><span>The fan and commercial outcome.</span></div>
+            <div class="loop-step"><strong>Learn</strong><span>What should happen differently next time.</span></div>
+          </div>
+        </section>
+
+        <section id="outcomes" aria-labelledby="outcomes-title">
+          <p class="section-kicker">Six outcome plays</p>
+          <h2 id="outcomes-title">Lead with value, then reveal the foundation</h2>
+          <p class="section-intro">Each play connects a business result to the experiences, prerequisites, measures, and stakeholders required to make it real.</p>
+          <div class="outcomes">
+            <details class="outcome" open>
+              <summary>
+                <span class="outcome-number">1</span>
+                <span class="outcome-title"><h3>Know Your Fans and Create Hyper-Personalized Offers</h3><span>Increase spend and conversion by making each offer relevant to the fan, game, and moment.</span></span>
+                <span class="chevron" aria-hidden="true">+</span>
+              </summary>
+              <div class="outcome-body">
+                <p>Instead of sending the same halftime promotion to everyone, recognize that one fan usually buys food in the second quarter, another responds to merchandise after a win, and another should not receive an offer because they recently redeemed one.</p>
+                <div class="outcome-grid">
+                  <div><h4>What becomes possible</h4><ul><li>Match live behavior with loyalty, purchases, preferences, seat, and offer history.</li><li>Detect when a fan is behind their normal purchase or engagement pattern.</li><li>Select an offer the fan is likely to value and can realistically use.</li><li>Personalize timing, category, value, message, and channel.</li><li>Attribute redemption and revenue to the originating decision.</li></ul></div>
+                  <div><h4>Prerequisites</h4><ul><li>Unify live fan signals and analytical history.</li><li>Resolve consented identity across ticketing, app, loyalty, and POS.</li><li>Connect fan and game identifiers to the current session.</li><li>Capture delivery, redemption, transaction, and non-response.</li><li>Use controls to distinguish incremental value.</li></ul></div>
+                  <div><h4>Measures</h4><ul><li>Incremental revenue and contribution margin per addressable fan</li><li>Conversion and redemption lift versus control</li><li>Average transaction value</li><li>Cost per incremental redemption</li><li>Offer fatigue and opt-out rate</li></ul></div>
+                </div>
+                <div class="buyer">Buyer conversation: Chief Revenue Officer, Chief Marketing Officer, Head of Loyalty</div>
+              </div>
+            </details>
+
+            <details class="outcome" open>
+              <summary>
+                <span class="outcome-number">2</span>
+                <span class="outcome-title"><h3>Protect the Live Moment While Growing Revenue</h3><span>Increase commercial effectiveness without degrading the experience fans came to enjoy.</span></span>
+                <span class="chevron" aria-hidden="true">+</span>
+              </summary>
+              <div class="outcome-body">
+                <p>The next best action is sometimes no action. A fan watching a critical play, celebrating a score, or showing high engagement should not be interrupted. Sports-IQ identifies natural pauses and suppresses commercial messages during peak excitement.</p>
+                <div class="outcome-grid">
+                  <div><h4>What becomes possible</h4><ul><li>Recognize Red Zone drives, clutch time, power plays, VAR reviews, and intermissions.</li><li>Reserve engagement for timeouts, breaks, and arrival windows.</li><li>Apply loyalty-aware contact limits, budgets, and responsible-offer policies.</li><li>Coordinate service messages and promotions.</li></ul></div>
+                  <div><h4>Prerequisites</h4><ul><li>Stream reliable game-state and engagement signals.</li><li>Define when outreach is allowed, discouraged, or prohibited.</li><li>Agree frequency, eligibility, budget, alcohol, and safety policies.</li><li>Monitor latency so actions do not arrive after the moment.</li></ul></div>
+                  <div><h4>Measures</h4><ul><li>Revenue or margin per message</li><li>Conversion by game moment</li><li>Dismissal and opt-out rates</li><li>Engagement recovery</li><li>Decision-to-delivery latency</li></ul></div>
+                </div>
+                <div class="buyer">Buyer conversation: Chief Experience Officer, Chief Revenue Officer, Digital Product Leader</div>
+              </div>
+            </details>
+
+            <details class="outcome" open>
+              <summary>
+                <span class="outcome-number">3</span>
+                <span class="outcome-title"><h3>Make Every Recommendation Relevant and Feasible</h3><span>Replace generic recommendations with actions grounded in the realities of the venue.</span></span>
+                <span class="chevron" aria-hidden="true">+</span>
+              </summary>
+              <div class="outcome-body">
+                <p>A relevant offer is still a poor experience if the item is unavailable, the concession is too far away, the queue is too long, or the fan is exposed to bad weather. Sports-IQ combines fan intent with venue and operational knowledge.</p>
+                <div class="outcome-grid">
+                  <div><h4>What becomes possible</h4><ul><li>Recommend the nearest suitable concession or merchandise location.</li><li>Account for walk time, accessibility, weather, menu, and preparation time.</li><li>Match loyalty benefits to entitlement and context.</li><li>Adapt when a zone is closed, congested, or at capacity.</li><li>Prioritize mobile ordering, seat delivery, or weather-aware items.</li></ul></div>
+                  <div><h4>Prerequisites</h4><ul><li>Curate venue guides, maps, menus, loyalty rules, and policies.</li><li>Connect current weather and operational status.</li><li>Assign content ownership and freshness standards.</li><li>Require grounded answers and preserve traceability.</li></ul></div>
+                  <div><h4>Measures</h4><ul><li>Fulfillment and redemption rate</li><li>Abandoned order rate</li><li>Average walk and wait time</li><li>Recommendation accuracy</li><li>Grounding and policy compliance</li></ul></div>
+                </div>
+                <div class="buyer">Buyer conversation: Chief Operating Officer, Venue Operations Leader, Head of Guest Experience</div>
+              </div>
+            </details>
+
+            <details class="outcome" open>
+              <summary>
+                <span class="outcome-number">4</span>
+                <span class="outcome-title"><h3>Remove Friction From Doorstep to Seat and Back</h3><span>Make game day easier before the fan enters the venue and after the event ends.</span></span>
+                <span class="chevron" aria-hidden="true">+</span>
+              </summary>
+              <div class="outcome-body">
+                <p>The fan experience starts before arrival. Sports-IQ can evolve into a journey companion that helps fans plan when to leave, choose a route, find parking, reach the right gate, navigate the venue, and plan the trip home.</p>
+                <div class="outcome-grid">
+                  <div><h4>What becomes possible</h4><ul><li>Combine ticket, venue, weather, traffic, transit, and parking context.</li><li>Recommend parking by gate, accessibility, arrival, and availability.</li><li>Adapt route and departure guidance to current conditions.</li><li>Guide fans from parking or transit to their seats.</li><li>Recommend the least-friction return route.</li></ul></div>
+                  <div><h4>Prerequisites</h4><ul><li>Connect trusted traffic, transit, closure, and parking context.</li><li>Maintain authoritative gate, accessibility, and parking knowledge.</li><li>Obtain consent for location-aware assistance.</li><li>Define handoffs to mapping, parking, ticketing, and team apps.</li><li>Design fallbacks for unavailable external data.</li></ul></div>
+                  <div><h4>Measures</h4><ul><li>On-time arrival and gate entry</li><li>Parking-assistance completion</li><li>Time from perimeter to seat</li><li>Game-day support contacts</li><li>Fan satisfaction and app retention</li><li>Pre-game service revenue</li></ul></div>
+                </div>
+                <div class="buyer">Buyer conversation: Chief Operating Officer, Chief Experience Officer, Head of Digital</div>
+              </div>
+            </details>
+
+            <details class="outcome" open>
+              <summary>
+                <span class="outcome-number">5</span>
+                <span class="outcome-title"><h3>Turn Every Interaction Into a Learning Loop</h3><span>Build a measurable system that improves fan decisions instead of running disconnected campaigns.</span></span>
+                <span class="chevron" aria-hidden="true">+</span>
+              </summary>
+              <div class="outcome-body">
+                <p>Each recommendation should produce evidence: Was it delivered? Did the fan engage? Was there a transaction? Did it improve the experience or create fatigue? Sports-IQ connects actions to outcomes so teams continuously improve.</p>
+                <div class="outcome-grid">
+                  <div><h4>What becomes possible</h4><ul><li>Link decisions to delivery, response, redemption, and transactions.</li><li>Compare performance by segment, zone, channel, and moment.</li><li>Identify incremental margin rather than attributed gross sales.</li><li>Update preferences and decision policies from observed behavior.</li><li>Share performance across commercial, experience, and operations teams.</li></ul></div>
+                  <div><h4>Prerequisites</h4><ul><li>Create a common fan, game, offer, and transaction measurement model.</li><li>Preserve correlation identifiers through fulfillment.</li><li>Establish holdout groups and experimentation governance.</li><li>Separate gross revenue, incremental revenue, margin, and cost.</li></ul></div>
+                  <div><h4>Measures</h4><ul><li>Incremental contribution margin versus control</li><li>Attributable redemption</li><li>Decision precision and acceptance</li><li>Repeat engagement</li><li>Lifetime value and retention indicators</li><li>Cost-to-value ratio</li></ul></div>
+                </div>
+                <div class="buyer">Buyer conversation: Chief Data Officer, Chief Revenue Officer, Finance Leader</div>
+              </div>
+            </details>
+
+            <details class="outcome" open>
+              <summary>
+                <span class="outcome-number">6</span>
+                <span class="outcome-title"><h3>Give Teams a Shared Game-Day Operating Picture</h3><span>Help revenue, guest experience, loyalty, and venue operations act from the same current understanding.</span></span>
+                <span class="chevron" aria-hidden="true">+</span>
+              </summary>
+              <div class="outcome-body">
+                <p>The same intelligence used for fan decisions can answer operational questions: Which sections show declining engagement? Which concession zones are active? Where is revenue at risk? This shortens the distance between insight and action.</p>
+                <div class="outcome-grid">
+                  <div><h4>What becomes possible</h4><ul><li>Ask business questions across live and historical context.</li><li>Detect demand, congestion, service, or engagement patterns.</li><li>Give human operators context before sensitive actions.</li><li>Create one view from live operations through commercial outcomes.</li></ul></div>
+                  <div><h4>Prerequisites</h4><ul><li>Standardize fan, game, venue, offer, and purchase definitions.</li><li>Apply role-based access and protect personal information.</li><li>Publish trusted measures and authoritative sources.</li><li>Capture operator decisions in the learning loop.</li></ul></div>
+                  <div><h4>Measures</h4><ul><li>Time from question to decision</li><li>Manual analysis hours avoided</li><li>Intervention completion</li><li>Operational response time</li><li>Adoption by revenue and venue teams</li></ul></div>
+                </div>
+                <div class="buyer">Buyer conversation: Chief Operating Officer, Chief Data Officer, Revenue Operations Leader</div>
+              </div>
+            </details>
+          </div>
+        </section>
+
+        <section id="portfolio" aria-labelledby="portfolio-title">
+          <p class="section-kicker">Outcome portfolio</p>
+          <h2 id="portfolio-title">Start narrow. Expand with evidence.</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Customer priority</th><th>Outcome promise</th><th>Start with</th><th>Expand toward</th></tr></thead>
+              <tbody>
+                <tr><td>Grow game-day revenue</td><td>Convert relevant moments into incremental fan value</td><td>One observable F&amp;B or merchandise journey</td><td>Cross-category next-best-action orchestration</td></tr>
+                <tr><td>Improve fan experience</td><td>Help when useful and remain silent during peak moments</td><td>Excitement suppression and contact policy</td><td>Coordinated service, loyalty, and commercial actions</td></tr>
+                <tr><td>Increase loyalty</td><td>Make every recognized fan feel understood</td><td>Tier, preference, and purchase-aware benefits</td><td>Journey-wide personalization</td></tr>
+                <tr><td>Improve venue operations</td><td>Ground decisions in current venue reality</td><td>Venue guide, menus, walk times, and weather</td><td>Live congestion, inventory, and fulfillment optimization</td></tr>
+                <tr><td>Reduce journey friction</td><td>Guide fans from departure through return</td><td>Parking and gate guidance</td><td>Traffic, transit, accessibility, and return-trip planning</td></tr>
+                <tr><td>Improve decision quality</td><td>Learn what creates incremental value</td><td>Closed-loop redemption measurement</td><td>Governed experimentation and adaptive policies</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="maturity" aria-labelledby="maturity-title">
+          <p class="section-kicker">Recommended maturity journey</p>
+          <h2 id="maturity-title">Build confidence one measurable stage at a time</h2>
+          <div class="maturity">
+            <div class="stage"><small>Stage 1</small><h3>See the Fan</h3><p>Create a consented fan view across identity, attendance, loyalty, purchase, and interaction.</p><p class="exit">Exit: connect fan, game, action, and outcome.</p></div>
+            <div class="stage"><small>Stage 2</small><h3>Prove One Moment</h3><p>Test one observable journey, such as a timeout concession offer, against a control.</p><p class="exit">Exit: prove margin within experience and latency guardrails.</p></div>
+            <div class="stage"><small>Stage 3</small><h3>Add Context</h3><p>Add game state, venue, loyalty, operations, availability, and weather.</p><p class="exit">Exit: meet relevance, fulfillment, grounding, and experience targets.</p></div>
+            <div class="stage"><small>Stage 4</small><h3>Connect the Journey</h3><p>Extend to departure planning, parking, entry, navigation, and return travel.</p><p class="exit">Exit: coordinate assistance without channel conflict or fatigue.</p></div>
+            <div class="stage"><small>Stage 5</small><h3>Scale Learning</h3><p>Expand across segments, categories, games, venues, and sports.</p><p class="exit">Exit: repeatable contribution margin and experience gains.</p></div>
+          </div>
+        </section>
+
+        <section id="buyers" aria-labelledby="buyers-title">
+          <p class="section-kicker">Buyer-level messages</p>
+          <h2 id="buyers-title">Meet each executive in their value language</h2>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Buyer</th><th>Lead with</th><th>Evidence they will ask for</th></tr></thead>
+              <tbody>
+                <tr><td>Chief Revenue Officer</td><td>Grow incremental value from moments already present in game day</td><td>Margin versus control, conversion, average order value, reach</td></tr>
+                <tr><td>Chief Marketing Officer</td><td>Move from broad campaigns to relevant fan-level decisions</td><td>Engagement lift, loyalty activity, opt-outs, repeat response</td></tr>
+                <tr><td>Chief Experience Officer</td><td>Improve convenience without interrupting the event</td><td>Satisfaction, dismissals, complaints, journey completion, wait time</td></tr>
+                <tr><td>Chief Operating Officer</td><td>Turn current venue conditions into coordinated action</td><td>Throughput, response time, congestion, fulfillment, service contacts</td></tr>
+                <tr><td>Chief Data Officer</td><td>Convert fragmented data into governed, reusable intelligence</td><td>Identity match, freshness, lineage, access controls, latency</td></tr>
+                <tr><td>Chief Financial Officer</td><td>Prove incremental contribution, not attributed gross sales</td><td>Holdout design, margin, program cost, sensitivity, payback</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="discovery" aria-labelledby="discovery-title">
+          <p class="section-kicker">Discovery questions</p>
+          <h2 id="discovery-title">Find the first outcome worth proving</h2>
+          <div class="question-grid">
+            <div class="question-group"><h3>Business Value</h3><ul><li>Which game-day revenue streams have the largest gap between fan intent and conversion?</li><li>Where do generic campaigns create waste or fan fatigue?</li><li>Which journeys have measurable outcomes for a controlled pilot?</li><li>How is incremental value distinguished from attributed sales?</li></ul></div>
+            <div class="question-group"><h3>Fan Experience</h3><ul><li>Where do fans experience the most friction before, during, and after an event?</li><li>Which moments should never be interrupted?</li><li>Which loyalty benefits are difficult to discover or redeem?</li><li>What consent and communication preferences are captured?</li></ul></div>
+            <div class="question-group"><h3>Data and Operations</h3><ul><li>Can ticketing, app, loyalty, POS, and parking resolve to one consented fan?</li><li>How quickly are game, transaction, queue, and inventory signals available?</li><li>Who owns venue, menu, parking, loyalty, and freshness?</li><li>Can an offer be traced through delivery, redemption, and transaction?</li></ul></div>
+            <div class="question-group"><h3>Scale and Governance</h3><ul><li>Which policies require human approval or deterministic enforcement?</li><li>What are acceptable latency, failure, and fallback thresholds?</li><li>Which metrics must improve before expansion?</li><li>How will commercial value and fan trust be reviewed together?</li></ul></div>
+          </div>
+        </section>
+
+        <section id="pitch" aria-labelledby="pitch-title">
+          <div class="pitch">
+            <p class="section-kicker">60-second executive pitch</p>
+            <h2 id="pitch-title">Turn game-day context into timely fan value</h2>
+            <div id="pitchText">
+              <p>Sports organizations have only a few seconds to act on what is happening during a live event, but fan, transaction, venue, and game information is usually fragmented. Sports-IQ connects those signals with each fan's loyalty, spending, purchase, and response history to determine whether the next best action is useful guidance, a relevant offer, or no interruption at all.</p>
+              <p>It protects peak moments by suppressing outreach when fans are highly engaged. At the right moments, it can recommend an offer grounded in real venue constraints, help a fan find the best concession, adapt to weather, or guide their route to the stadium, parking, gate, seat, and trip home. Every action can be connected to a measurable response, creating a learning loop across revenue, experience, and operations.</p>
+              <p>The recommended entry point is a controlled pilot around one observable fan journey, measured for incremental contribution margin, fan response, and decision speed. Once proven, the same foundation can expand across the complete game-day experience.</p>
+            </div>
+            <div class="pitch-actions"><button class="copy-button" id="copyPitch" type="button">Copy executive pitch</button></div>
+          </div>
+        </section>
+
+        <section id="foundation" aria-labelledby="foundation-title">
+          <p class="section-kicker">Enabling foundation</p>
+          <h2 id="foundation-title">The technology stays behind the outcome</h2>
+          <p class="section-intro">Use this translation only after the customer has aligned on the business value and prerequisite capabilities.</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>Business requirement</th><th>Enabling capability</th><th>Product foundation</th></tr></thead>
+              <tbody>
+                <tr><td>Combine live context with fan history</td><td>Unified real-time and analytical data estate</td><td>Microsoft Fabric: Eventstream, Eventhouse, OneLake, Lakehouse</td></tr>
+                <tr><td>Understand fan, game, purchase, and loyalty relationships</td><td>Governed business meaning across connected data</td><td>Fabric IQ: ontology and Data Agent</td></tr>
+                <tr><td>Ground decisions in venue, loyalty, policy, and weather knowledge</td><td>Retrieval over trusted structured and unstructured sources</td><td>Foundry IQ knowledge base and connected sources</td></tr>
+                <tr><td>Choose a governed next action</td><td>Agentic decisioning, orchestration, and policy enforcement</td><td>Microsoft Foundry agents and workflows</td></tr>
+                <tr><td>Add route, traffic, transit, and parking context</td><td>Trusted public web grounding</td><td>Web IQ as journey assistance matures</td></tr>
+                <tr><td>Measure delivery, redemption, and improvement</td><td>Closed-loop events and operational telemetry</td><td>Fabric feedback loop and application observability</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section id="value" aria-labelledby="value-title">
+          <p class="section-kicker">Value hypothesis and claim discipline</p>
+          <h2 id="value-title">A model to test, not a result to claim</h2>
+          <div class="assumptions">
+            <div class="metric"><strong>68K</strong><span>Modeled stadium capacity</span></div>
+            <div class="metric"><strong>35%</strong><span>Assumed app adoption</span></div>
+            <div class="metric"><strong>$22.84</strong><span>Potential uplift per addressable fan/game</span></div>
+            <div class="metric"><strong>$4.3M</strong><span>Potential gross uplift across eight home games</span></div>
+          </div>
+          <div class="caution"><strong>Important:</strong> The approximately $543,000 per-game and $4.3 million seasonal figures are modeled scenario outputs, not measured customer results. Test them through a controlled pilot and report gross revenue, incremental revenue, contribution margin, program cost, and fan-experience guardrails separately.</div>
+        </section>
+
+        <section id="cta" aria-labelledby="cta-title">
+          <div class="cta">
+            <div>
+              <p class="section-kicker">Recommended call to action</p>
+              <h2 id="cta-title">Select one measurable game-day journey</h2>
+              <p class="section-intro">Run a value-discovery workshop that ends with a controlled pilot, explicit ownership, and a clear scale decision.</p>
+            </div>
+            <ol class="cta-list">
+              <li>One prioritized fan and business outcome</li>
+              <li>One addressable segment and observable journey</li>
+              <li>Baseline, control, commercial, and experience measures</li>
+              <li>Required data, consent, knowledge, and owners</li>
+              <li>Timing, frequency, eligibility, safety, and approval guardrails</li>
+              <li>A pilot scorecard and explicit scale decision</li>
+            </ol>
+          </div>
+        </section>
+
+        <footer>
+          <strong>Internal evidence base</strong>
+          <ul>
+            <li><a href="../README.md">Sports-IQ README</a>: proposition, architecture, guardrails, and Foundry IQ grounding</li>
+            <li><a href="professional football-High-Level-Design.md">professional football High-Level Design</a>: journey, timing, outcome model, and KPIs</li>
+            <li><a href="High-Level-Design.md">High-Level Design</a>: cross-sport engagement design and success measures</li>
+            <li><a href="../fabric/data_agent/Stadium-Venue-Guide.md">Stadium Venue Guide</a>: venue, concession, merchandise, and weather context</li>
+          </ul>
+          <a class="back-to-top" href="#top">Back to top</a>
+        </footer>
+      </article>
+    </main>
+  </div>
+
+  <script>
+    const themeButton = document.getElementById("themeButton");
+    const printButton = document.getElementById("printButton");
+    const expandButton = document.getElementById("expandButton");
+    const copyPitch = document.getElementById("copyPitch");
+    const outcomes = Array.from(document.querySelectorAll("details.outcome"));
+    let allExpanded = true;
+
+    themeButton.addEventListener("click", () => {
+      const current = document.documentElement.getAttribute("data-theme");
+      document.documentElement.setAttribute("data-theme", current === "dark" ? "light" : "dark");
+    });
+
+    printButton.addEventListener("click", () => window.print());
+
+    expandButton.addEventListener("click", () => {
+      allExpanded = !allExpanded;
+      outcomes.forEach((outcome) => { outcome.open = allExpanded; });
+      expandButton.textContent = allExpanded ? "+" : "−";
+      expandButton.setAttribute("aria-label", allExpanded ? "Collapse all outcome plays" : "Expand all outcome plays");
+    });
+
+    copyPitch.addEventListener("click", async () => {
+      const text = document.getElementById("pitchText").innerText.trim();
+      try {
+        await navigator.clipboard.writeText(text);
+        copyPitch.textContent = "Pitch copied";
+      } catch {
+        copyPitch.textContent = "Select and copy the pitch";
+      }
+      window.setTimeout(() => { copyPitch.textContent = "Copy executive pitch"; }, 1800);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+schemaVersion: 1
+artifact: docs/plans/customer-skill-governance/plan.md
+planItems:
+  "1.1": [T001, T002, T003]
+  "1.2": [T004, T005, T006, T007]
+  "2.1": [T008, T009, T010, T011]
+  "2.2": [T012, T013, T014]
+  "3.1": [T015, T016, T017, T018, T019]
+  "3.2": [T020, T021, T022]
+  "4.1": [T023, T024, T025, T026, T027]
+  "4.2": [T028, T029, T030]
+  "5.1": [T031, T032, T033]
+  "5.2": [T034, T035, T036]
+  "6.1": [T037, T038, T039, T040]
+  "7.1": [T041, T042, T043, T044]
+  "7.2": [T045, T046, T047, T048]
+gate:
+  unmappedPlanItems: []
+  duplicateTaskIds: []
+  status: pass

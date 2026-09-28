@@ -1,0 +1,6 @@
+// Idempotent sport-neutral Eventhouse schema. Keep one command per line.
+.create-merge table FanEngagementEvent (eventId:string, fanId:string, gameId:string, sport:string, eventTimestamp:datetime, sourceSystem:string, sectionId:string, eventType:string, engagementScore:real, gameMinute:real, period:int)
+.create-merge table POSTransaction (transactionId:string, fanId:string, gameId:string, transactionTimestamp:datetime, sourceSystem:string, sectionId:string, category:string, itemName:string, quantity:int, unitPrice:real, totalAmount:real, offerRedeemed:bool, promoId:string, gameMinute:real, period:int)
+.create-merge table GameExcitementIndex (readingId:string, gameId:string, sport:string, timestamp:datetime, gameMinute:real, period:int, isBreak:bool, scoreDifferential:int, excitementIndex:real)
+.create-merge table OfferFeedbackEvent (feedbackId:string, promoId:string, fanId:string, gameId:string, sourceSystem:string, offerTimestamp:datetime, outcomeTimestamp:datetime, outcome:string, offerCategory:string, revenueImpact:real, channel:string, gameMinute:real, period:int, triggerContext:string)
+.alter tables (FanEngagementEvent, POSTransaction, GameExcitementIndex, OfferFeedbackEvent) policy caching hot = 7d

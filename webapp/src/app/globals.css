@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --brand-gold:   #F5A623;
+  --brand-navy:   #1A3350;
+  --brand-dark:   #0F1F35;
+  --brand-field:  #0D4A25;
+  --brand-steel:  #1E3D5C;
+  --brand-grass:  #16A34A;
+}
+
+body {
+  background-color: var(--brand-dark);
+  background-image:
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 79px,
+      rgba(16, 163, 74, 0.04) 80px
+    ),
+    radial-gradient(ellipse 120% 60% at 50% 0%, rgba(13, 74, 37, 0.25) 0%, transparent 70%);
+}
+
+/* Broadcast-style LED pulse for live indicators */
+@keyframes led-pulse {
+  0%, 100% { opacity: 1; box-shadow: 0 0 6px 2px rgba(16, 163, 74, 0.7); }
+  50%       { opacity: 0.6; box-shadow: 0 0 2px 1px rgba(16, 163, 74, 0.3); }
+}
+.led-live {
+  animation: led-pulse 1.2s ease-in-out infinite;
+}
+
+/* Scoreboard-style digit glow */
+@keyframes digit-glow {
+  0%, 100% { text-shadow: 0 0 20px rgba(245,166,35,0.6), 0 0 40px rgba(245,166,35,0.3); }
+  50%       { text-shadow: 0 0 30px rgba(245,166,35,0.9), 0 0 60px rgba(245,166,35,0.4); }
+}
+.score-glow {
+  animation: digit-glow 2s ease-in-out infinite;
+}

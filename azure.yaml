@@ -1,0 +1,32 @@
+name: sportsiq
+metadata:
+  template: sportsiq-public@1.0.0
+
+infra:
+  provider: bicep
+  path: infra
+
+services:
+  agents:
+    project: .
+    host: containerapp
+    docker:
+      path: infra/Dockerfile.agents
+      context: agents
+  webapp:
+    project: .
+    host: containerapp
+    docker:
+      path: infra/Dockerfile.webapp
+      context: webapp
+
+hooks:
+  preprovision:
+    shell: pwsh
+    run: ./scripts/azd/preprovision.ps1
+  postprovision:
+    shell: pwsh
+    run: ./scripts/azd/postprovision.ps1
+  postdeploy:
+    shell: pwsh
+    run: ./scripts/azd/validate_deployment.ps1

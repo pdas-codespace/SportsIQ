@@ -1,0 +1,74 @@
+# ── Python ──────────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+.venv/
+venv/
+env/
+.env
+*.egg-info/
+dist/
+build/
+.mypy_cache/
+.pytest_cache/
+htmlcov/
+.coverage
+*.cover
+
+# ── Jupyter ──────────────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Node / Next.js ────────────────────────────────────────────────────────────
+node_modules/
+.next/
+out/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# ── Secrets / credentials ─────────────────────────────────────────────────────
+.env
+*.pem
+*.key
+*.pfx
+*.p12
+
+# ── Azure / Fabric tooling ────────────────────────────────────────────────────
+.azure/
+azd-env/
+infra/main.json
+
+# ── OS artefacts ──────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ── Editor / IDE ──────────────────────────────────────────────────────────────
+.vscode/settings.json
+.idea/
+*.suo
+*.user
+
+# ── Logs ──────────────────────────────────────────────────────────────────────
+*.log
+logs/
+
+# ── One-time / local fix scripts (not part of standard setup) ────────────────
+fabric/seed_demo_events.kql
+
+# ── TypeScript build artifacts ────────────────────────────────────────────────
+webapp/tsconfig.tsbuildinfo
+
+SportsIQ_GTM_Deck.pptx
+Behind-the-scenes.md
+docs/SportsIQ-Outcome-Implementation-Gap-Analysis.md
+.tmp/
+.copilot/
+data/generated/
+data_generators/__pycache__/
+plan-productionHighVolumeOfferOrchestration.prompt.md

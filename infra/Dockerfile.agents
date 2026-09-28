@@ -1,0 +1,28 @@
+ARG DOCKER_REGISTRY=""
+FROM ${DOCKER_REGISTRY}python:3.12-slim-bookworm
+
+WORKDIR /app
+
+# Install ODBC driver for Fabric Lakehouse SQL endpoint
+
+RUN apt-get update && apt-get install -y --no-install-recommends \
+    curl gnupg2 unixodbc-dev \
+    && install -m 0755 -d /etc/apt/keyrings \
+    && curl -fsSL https://packages.microsoft.com/keys/microsoft.asc \
+       | gpg --dearmor -o /etc/apt/keyrings/microsoft.gpg \
+    && echo "deb [arch=amd64,arm64 signed-by=/etc/apt/keyrings/microsoft.gpg] \
+       https://packages.microsoft.com/debian/12/prod bookworm main" \
+       > /etc/apt/sources.list.d/mssql-release.list \
+    && apt-get update \
+    && ACCEPT_EULA=Y apt-get install -y msodbcsql18 \
+    && rm -rf /var/lib/apt/lists/*
+
+COPY requirements.txt .
+RUN pip install --no-cache-dir -r requirements.txt
+
+# Copy the agents package so `agents.server` is importable as a module
+COPY . /app/agents
+
+EXPOSE 8000
+
+CMD ["uvicorn", "agents.server:app", "--host", "0.0.0.0", "--port", "8000", "--log-level", "debug"]

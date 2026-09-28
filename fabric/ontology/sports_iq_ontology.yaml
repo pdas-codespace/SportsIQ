@@ -1,0 +1,98 @@
+ontology:
+  name: Sports-IQ Fan Engagement Ontology
+  version: "1.0"
+  namespace: "https://sports-iq.example/ontology#"
+  description: >
+    Sport-neutral semantic model for fictional fan engagement, live event
+    context, offers, purchases, venue sections, and feedback.
+
+entities:
+  Fan:
+    table: fan_profile
+    primary_key: fanId
+    properties:
+      fanId: {type: string, key: true}
+      fanName: {type: string, fictional: true}
+      sport: {type: string}
+      loyaltyTier: {type: string, values: [Bronze, Silver, Gold, Platinum]}
+      preferredSectionId: {type: string}
+      avgSpendPerGame: {type: double}
+      avgConcessionSpend: {type: double}
+      avgMerchandiseSpend: {type: double}
+      offerFatigueGapMinutes: {type: integer}
+      baseEngagementScore: {type: double}
+      churnRiskScore: {type: double}
+
+  Game:
+    table: game_context
+    primary_key: gameId
+    properties:
+      gameId: {type: string, key: true}
+      sport: {type: string}
+      homeTeam: {type: string}
+      awayTeam: {type: string}
+      venueId: {type: string}
+      gameDateUtc: {type: datetime}
+      gameStatus: {type: string}
+
+  Promotion:
+    table: promotion_history
+    primary_key: promoId
+    properties:
+      promoId: {type: string, key: true}
+      fanId: {type: string}
+      gameId: {type: string}
+      offerCategory: {type: string}
+      offerValue: {type: double}
+      outcome: {type: string}
+      lastOfferTimestamp: {type: datetime}
+
+  EngagementEvent:
+    table: FanEngagementEvent
+    source: Eventhouse
+    primary_key: eventId
+    properties:
+      eventId: {type: string, key: true}
+      fanId: {type: string}
+      gameId: {type: string}
+      sport: {type: string}
+      eventTimestamp: {type: datetime}
+      engagementScore: {type: double}
+      period: {type: integer}
+
+  Purchase:
+    table: POSTransaction
+    source: Eventhouse
+    primary_key: transactionId
+    properties:
+      transactionId: {type: string, key: true}
+      fanId: {type: string}
+      gameId: {type: string}
+      category: {type: string}
+      totalAmount: {type: double}
+      offerRedeemed: {type: boolean}
+
+  ExcitementReading:
+    table: GameExcitementIndex
+    source: Eventhouse
+    primary_key: readingId
+    properties:
+      readingId: {type: string, key: true}
+      gameId: {type: string}
+      sport: {type: string}
+      period: {type: integer}
+      isBreak: {type: boolean}
+      excitementIndex: {type: double}
+
+relationships:
+  - {from: Fan.fanId, to: EngagementEvent.fanId, cardinality: one-to-many}
+  - {from: Fan.fanId, to: Purchase.fanId, cardinality: one-to-many}
+  - {from: Fan.fanId, to: Promotion.fanId, cardinality: one-to-many}
+  - {from: Game.gameId, to: EngagementEvent.gameId, cardinality: one-to-many}
+  - {from: Game.gameId, to: Purchase.gameId, cardinality: one-to-many}
+  - {from: Game.gameId, to: ExcitementReading.gameId, cardinality: one-to-many}
+
+computed_metrics:
+  offerEligibility: "minutesSinceLastOffer >= offerFatigueGapMinutes"
+  engagementDelta: "engagementScore - baseEngagementScore"
+  conversionRate: "redeemedOffers / deliveredOffers"

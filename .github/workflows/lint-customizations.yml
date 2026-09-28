@@ -1,0 +1,31 @@
+name: lint-customizations
+
+on:
+  pull_request:
+    paths:
+      - '.github/agents/**'
+      - '.github/instructions/**'
+      - '.github/prompts/**'
+      - 'scripts/validate-skills.ps1'
+      - '.github/workflows/lint-customizations.yml'
+  push:
+    branches: [main]
+    paths:
+      - '.github/agents/**'
+      - '.github/instructions/**'
+      - '.github/prompts/**'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    name: Validate frontmatter
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Run validator
+        shell: pwsh
+        run: ./scripts/validate-skills.ps1 -Verbose
